@@ -1,0 +1,42 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netstandard2.0\CMS.DataAccess.deps.json" />
+    <Content Include="bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.xml" />
+    <Content Include="bin\Debug\netstandard2.0\System.Configuration.xml" />
+    <Content Include="bin\Debug\netstandard2.0\System.Security.xml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CMS.Core\CMS.Core.csproj" />
+    <ProjectReference Include="..\CMS.Entities\CMS.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\CMS.UI\bin\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netstandard2.0\CMS.Core.dll" />
+    <None Include="bin\Debug\netstandard2.0\CMS.Core.pdb" />
+    <None Include="bin\Debug\netstandard2.0\CMS.DataAccess.dll" />
+    <None Include="bin\Debug\netstandard2.0\CMS.DataAccess.pdb" />
+    <None Include="bin\Debug\netstandard2.0\CMS.Entities.dll" />
+    <None Include="bin\Debug\netstandard2.0\CMS.Entities.pdb" />
+    <None Include="bin\Debug\netstandard2.0\EntityFramework.dll" />
+    <None Include="bin\Debug\netstandard2.0\FluentValidation.dll" />
+    <None Include="bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.dll" />
+    <None Include="bin\Debug\netstandard2.0\System.Configuration.dll" />
+    <None Include="bin\Debug\netstandard2.0\System.Security.dll" />
+  </ItemGroup>
+
+</Project>

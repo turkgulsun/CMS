@@ -1,0 +1,16 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CMS.DataAccess\CMS.DataAccess.csproj" />
+    <ProjectReference Include="..\CMS.Entities\CMS.Entities.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="bin\Debug\netstandard2.0\" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,22 @@
+﻿@model CMS.UI.Areas.Admin.Models.ClassTypesVM.ClassTypeInfoListVM
+
+@foreach (var item in Model.ClassTypeInfo)
+{
+    <li>
+        <a href="@Url.Action("index", "Classes",new {area = "admin",id = item.ClassTypeID })">
+        @item.ClassType
+        </a>
+    </li>
+}
+@*@foreach (var item in Model.ClassTypeInfo)
+    {
+     <li>
+         <a href="@Url.Action("Index","Classes")">
+
+         </a>
+     </li>
+    }*@
+
+@*<li>
+        <a href="@Url.Action("Index","Classes")">test</a>
+    </li>*@

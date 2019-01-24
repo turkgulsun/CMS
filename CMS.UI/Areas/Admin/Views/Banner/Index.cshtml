@@ -1,0 +1,84 @@
+﻿@model IEnumerable<CMS.UI.Areas.Admin.Models.BannersVM.BannersListVM>
+@{
+    ViewBag.Title = "Bannerlar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+}
+
+<div class="title-bar">
+    <h1 class="title-bar-title">
+        <span class="icon icon-plus"></span>
+        <span class="d-ib">@Html.ActionLink("Banner Oluştur", "Create")</span>
+    </h1>
+</div>
+@using (Html.BeginForm("Delete", "Banner", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-middle">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Banner</th>
+                                    <th>Ad</th>
+                                    <th>Açıklama</th>
+                                    <th>Durum</th>
+                                    <th>Banner Yeri</th>
+                                    <th>Kayıt Tarihi</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" name="ids" value="@item.BannerID" />
+                                                <span class="custom-control-indicator"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <img src="~/Uploads/Banners/@item.BannerID/@item.Banner" alt="@item.Name" style="width:50px; height:50px;" />
+                                        </td>
+                                        <td>
+                                                @Html.DisplayFor(modelItem => item.Name)
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Description)
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => item.Active, new { @disabled = "disabled" })
+                                        </td>
+                                        <td>@Html.DisplayFor(modelItem => item.ListType)</td>
+                                        <td>
+                                            
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Düzenle", "Edit", new { id = item.BannerID }, new { @class = "btn btn-outline-primary pull-right" })
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                            <tfoot>
+                                @if (Model.Count() > 0)
+                                {
+                                    <tr>
+                                        <td colspan="8">
+                                            <input type="submit" name="delete" value="Delete" class="btn btn-danger pull-right" onclick="return confirm('Kaydı silmek istediğinizden emin misiniz?');" />
+
+                                        </td>
+                                    </tr>
+                                }
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}
+

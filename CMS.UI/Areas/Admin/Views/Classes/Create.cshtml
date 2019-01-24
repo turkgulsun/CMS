@@ -1,0 +1,101 @@
+﻿@model CMS.UI.Areas.Admin.Models.ClassesVM.ClassesVM
+@{
+    ViewBag.Title = "Sınıf Oluştur";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+<script src="~/Areas/Admin/ckeditor/ckeditor.js"></script>
+
+@using (Html.BeginForm("Create", "Classes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="demo-form-wrapper">
+                <hr />
+                <div class="tab-content">
+                    <div class="row">
+                        <div class="form form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ClassInfo.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.ClassInfo.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.ClassInfo.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ClassInfo.Summary, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.ClassInfo.Summary, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ClassInfo.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(model => model.ClassInfo.Description, new { @id = "FullDescription", @class = "form-control", @rows = "200" }) @Html.ValidationMessageFor(model => model.ClassInfo.Description, "", new { @class = "text-danger" })
+                                    <script>
+                                        CKEDITOR.replace("FullDescription");
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ClassInfo.MetaTitle, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(model => model.ClassInfo.MetaTitle, 5, 122, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ClassInfo.MetaKeywords, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(model => model.ClassInfo.MetaKeywords, 5, 122, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.ClassInfo.MetaDescription, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(model => model.ClassInfo.MetaDescription, 5, 122, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Classes.Image, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    <input id="form-control-9" type="file" name="uploadfile">
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Classes.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.CheckBoxFor(model => model.Classes.Active, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Classes.Sort, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.Classes.Sort, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+
+                            @Html.HiddenFor(model => model.Classes.ClassTypeID)
+                            @Html.HiddenFor(model => model.Classes.ParentID)
+
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Oluştur" class="btn btn-default" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Sınıf listesine geri dön", "Index", new { id = Model.Classes.ClassTypeID })
+</div>
+

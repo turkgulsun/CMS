@@ -1,0 +1,23 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netstandard2.0\CMS.Core.deps.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netstandard2.0\CMS.Core.dll" />
+    <None Include="bin\Debug\netstandard2.0\CMS.Core.pdb" />
+    <None Include="bin\Debug\netstandard2.0\EntityFramework.dll" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="EntityFramework">
+      <HintPath>..\CMS.UI\bin\EntityFramework.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>

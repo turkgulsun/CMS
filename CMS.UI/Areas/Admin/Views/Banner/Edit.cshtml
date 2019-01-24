@@ -1,0 +1,120 @@
+﻿@model CMS.UI.Areas.Admin.Models.BannersVM.BannersVM
+@{
+    ViewBag.Title = "Banner Güncelle";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    var listTypes = new SelectList(Model.ListType, "ListID", "Value");
+
+    List<SelectListItem> listTarget = new List<SelectListItem>();
+    listTarget.Add(new SelectListItem
+    {
+        Text = "_self",
+        Value = "_self",
+        Selected = true
+    });
+    listTarget.Add(new SelectListItem
+    {
+        Text = "_target",
+        Value = "_target"
+    });
+}
+
+<script src="~/Areas/Admin/ckeditor/ckeditor.js"></script>
+<script src="~/Content/js/jquery-1.11.2.min.js"></script>
+
+@using (Html.BeginForm("Create", "Banner", FormMethod.Post, new { id = "form1", enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="demo-form-wrapper">
+                <hr />
+                <div class="tab-content">
+                    <div class="row">
+                        <div class="form form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Banners.BannerListID, "Banner Yeri", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.DropDownListFor(model => model.Banners.BannerListID, listTypes, "Seçiniz", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.Banners.BannerListID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BannerInfo.Name, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.BannerInfo.Name, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.BannerInfo.Name, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BannerInfo.Description, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.TextAreaFor(model => model.BannerInfo.Description, new { @id = "FullDescription", @class = "form-control", @rows = "200" }) @Html.ValidationMessageFor(model => model.BannerInfo.Description, "", new { @class = "text-danger" })
+                                    <script>
+                                        CKEDITOR.replace("FullDescription");
+                                    </script>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BannerInfo.Banner, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    <input id="form-control-9" type="file" name="uploadfile">
+                                    <p id="fileMessage"></p>
+                                </div>
+                                <br />
+                                <p><b> Sınıf resmini değiştirmek istiyorsanız yeni bir resim yükleyiniz.</b></p>
+                                @if (Model.BannerInfo.Banner != null)
+                                {
+                                    <img src="/Uploads/Banners/@Model.Banners.BannerID/@Model.BannerInfo.Bann style="width:100px" />
+                                }
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.BannerInfo.Url, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.BannerInfo.Url, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Banners.Width, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.Banners.Width, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Banners.Height, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.Banners.Height, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Banners.Active, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.CheckBoxFor(model => model.Banners.Active, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Banners.Sort, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.Banners.Sort, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Oluştur" class="btn btn-default" id="btnSubmit" />
+                                </div>
+                            </div>
+                            @Html.HiddenFor(model => model.Banners.BannerID)
+                            @Html.HiddenFor(model => model.Banners.BannerListID)
+                            @Html.HiddenFor(model => model.BannerInfo.BannerInfoID)
+                            @Html.HiddenFor(model => model.Banners.CreationDate)
+                            @Html.HiddenFor(model => model.BannerInfo.LanguageID)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Banner listesine geri dön", "Index")
+</div>
+

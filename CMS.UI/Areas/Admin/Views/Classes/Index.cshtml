@@ -1,0 +1,84 @@
+﻿@model IEnumerable<CMS.UI.Areas.Admin.Models.ClassesVM.ClassesListVM>
+@{
+    ViewBag.Title = "Sınıflar";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+}
+
+<div class="title-bar">
+    <h1 class="title-bar-title">
+        <span class="icon icon-plus"></span>
+        <span class="d-ib">@Html.ActionLink("Sınıf Oluştur", "Create", new { id = ViewBag.ClassTypeID, classId=ViewBag.ClassId })</span>
+    </h1>
+</div>
+@using (Html.BeginForm("Delete", "Classes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="panel">
+                <div class="panel-body">
+                    <div class="table-responsive">
+                        <table class="table table-middle">
+                            <thead>
+                                <tr>
+                                    <th></th>
+                                    <th>Başlık</th>
+                                    <th>Özet</th>
+                                    <th>Durum</th>
+                                    <th>Kayıt Tarihi</th>
+                                    <th></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>
+                                            <label class="custom-control custom-control-primary custom-checkbox">
+                                                <input class="custom-control-input" type="checkbox" name="ids" value="@item.ClassID" />
+                                                <span class="custom-control-indicator"></span>
+                                            </label>
+                                        </td>
+                                        <td>
+                                            <a href="@Url.Action("Index", "Classes", new { id = 0, classTypeId = item.ClassTypeID, classId = item.ClassID})">
+                                            @Html.DisplayFor(modelItem => item.Name)
+                                            </a>
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.Summary)
+                                        </td>
+                                        <td>
+                                            @Html.CheckBoxFor(modelItem => item.Active, new { @disabled = "disabled" })
+                                        </td>
+                                        <td>
+                                            @Html.DisplayFor(modelItem => item.CreationDate)
+                                        </td>
+                                        <td>
+                                            @Html.ActionLink("Düzenle", "Edit", new { id = item.ClassID }, new { @class = "btn btn-outline-primary pull-right" })
+                                        </td>
+                                    </tr>
+                                    @Html.HiddenFor(modelItem => item.ClassTypeID)
+                                    @Html.HiddenFor(modelItem => item.Image)
+                                }
+                            </tbody>
+                            <tfoot>
+                                @if (Model.Count() > 0)
+                                {
+                                    <tr>
+                                        <td colspan="7">
+                                            <input type="submit" name="delete" value="Delete" class="btn btn-danger pull-right" onclick="return confirm('Kaydı silmek istediğinizden emin misiniz?');" />
+
+                                        </td>
+                                    </tr>
+                                }
+
+
+                            </tfoot>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+}

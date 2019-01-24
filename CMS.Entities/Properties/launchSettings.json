@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CMS.Entities": {
+      "commandName": "Project",
+      "commandLineArgs": "Entities katmanı veri tabanı tabloları ve tablolar ile birlikte oluşturuacağımız kompleks tipleri içerir. Proje boyunca kullanacağımız nesneleri içerir."
+    }
+  }
+}

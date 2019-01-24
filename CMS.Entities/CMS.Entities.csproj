@@ -1,0 +1,56 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.0</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Include="obj\Debug\netstandard2.0\CMS.Entities.AssemblyInfo.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="bin\Debug\netstandard2.0\CMS.Entities.deps.json" />
+    <Content Include="obj\Debug\netstandard2.0\CMS.Entities.csproj.FileListAbsolute.txt" />
+    <Content Include="obj\project.assets.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="ComplexTypes\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="bin\Debug\netstandard2.0\CMS.Core.dll" />
+    <None Include="bin\Debug\netstandard2.0\CMS.Core.pdb" />
+    <None Include="bin\Debug\netstandard2.0\CMS.Entities.dll" />
+    <None Include="bin\Debug\netstandard2.0\CMS.Entities.pdb" />
+    <None Include="bin\Debug\netstandard2.0\EntityFramework.dll" />
+    <None Include="bin\Debug\netstandard2.0\FluentValidation.dll" />
+    <None Include="bin\Debug\netstandard2.0\System.ComponentModel.DataAnnotations.dll" />
+    <None Include="obj\CMS.Entities.csproj.nuget.cache" />
+    <None Include="obj\CMS.Entities.csproj.nuget.g.props" />
+    <None Include="obj\CMS.Entities.csproj.nuget.g.targets" />
+    <None Include="obj\Debug\netstandard2.0\CMS.Entities.AssemblyInfoInputs.cache" />
+    <None Include="obj\Debug\netstandard2.0\CMS.Entities.csproj.CopyComplete" />
+    <None Include="obj\Debug\netstandard2.0\CMS.Entities.csproj.CoreCompileInputs.cache" />
+    <None Include="obj\Debug\netstandard2.0\CMS.Entities.csprojResolveAssemblyReference.cache" />
+    <None Include="obj\Debug\netstandard2.0\CMS.Entities.dll" />
+    <None Include="obj\Debug\netstandard2.0\CMS.Entities.pdb" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\CMS.Core\CMS.Core.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Reference Include="FluentValidation">
+      <HintPath>..\CMS.UI\bin\FluentValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="FluentValidation.ValidatorAttribute">
+      <HintPath>..\CMS.UI\bin\FluentValidation.ValidatorAttribute.dll</HintPath>
+    </Reference>
+    <Reference Include="System.ComponentModel.DataAnnotations">
+      <HintPath>C:\Program Files (x86)\Reference Assemblies\Microsoft\Framework\.NETFramework\v4.6.1\System.ComponentModel.DataAnnotations.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+
+</Project>
