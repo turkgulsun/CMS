@@ -150,10 +150,12 @@ namespace CMS.UI.Areas.Admin.Controllers
         {
             try
             {
+                var listTypes = _generalFunctions.GetListType("Menü Yeri");
                 var model = new MenusVM
                 {
                     Menus = _menusService.GetById(id),
-                    MenuInfo = _menuInfoService.Get(m => m.MenuID == id)
+                    MenuInfo = _menuInfoService.Get(m => m.MenuID == id),
+                    ListType = listTypes
                 };
                 return View(model);
             }
@@ -185,7 +187,31 @@ namespace CMS.UI.Areas.Admin.Controllers
                     model.Menus.Sort = 1;
                 }
 
-                return View();
+                if (uploadfile != null)
+                    menus.Image = uploadfile.FileName;
+                else
+                    menus.Image = null;
+
+                _menusService.Update(menus);
+
+                //Menüyü resmini kayıt edelim.
+                if (menus.Image != null && uploadfile != null)
+                {
+                    //Önceki resmi dosyadan silelim ki boşuna yer kaplamasın.
+                    string filePath = "/Uploads/Menus/" + menus.MenuID + "/" + menus.Image;
+                    if (System.IO.File.Exists(filePath))
+                        System.IO.File.Delete(filePath);
+
+                    _generalFunctions.CreateDirectory(HttpContext.Server.MapPath("/Uploads/Menus/"), menus.MenuID.ToString());
+                    uploadfile.SaveAs(HttpContext.Server.MapPath("/Uploads/Menus/" + menus.MenuID + "/" + uploadfile.FileName));
+                }
+
+                //Menü bilgilerini güncelleyelim.
+                _menuInfoService.Update(menuInfo);
+
+                TempData.Add("message", "Menü başarıyla güncellendi.");
+
+                return RedirectToAction("index");
             }
             catch (Exception ex)
             {

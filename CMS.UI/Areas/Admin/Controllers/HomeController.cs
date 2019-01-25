@@ -5,7 +5,7 @@ using System.Web.Mvc;
 namespace CMS.UI.Areas.Admin.Controllers
 {
     [RouteArea("admin")]
-    [RoutePrefix("home")]
+   // [RoutePrefix("home")]
     [Route("index")]
     public class HomeController : Controller
     {
@@ -25,7 +25,7 @@ namespace CMS.UI.Areas.Admin.Controllers
         }
 
 
-        [Route("ClassTypeList")]
+        [Route("home/ClassTypeList")]
         public ActionResult ClassTypeList()
         {
             var model = new ClassTypeInfoListVM()

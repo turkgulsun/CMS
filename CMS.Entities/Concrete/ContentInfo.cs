@@ -2,6 +2,7 @@
 using CMS.Entities.ValidationRules.FluentValidation;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Text;
 
@@ -12,6 +13,7 @@ namespace CMS.Entities.Concrete
     [FluentValidation.Attributes.Validator(typeof(ContentInfoValidator))] 
     public class ContentInfo : IEntity
     {
+        [Key]
         public int ContentInfoID { get; set; }
         public int ContentID { get; set; }
         public int LanguageID { get; set; }
