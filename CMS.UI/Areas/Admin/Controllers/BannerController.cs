@@ -198,22 +198,22 @@ namespace CMS.UI.Areas.Admin.Controllers
                 _bannerService.Update(banners);
 
                 //Yeni bir banner yüklediyse
-                if (uploadfile != null)
-                    bannerInfo.Banner = uploadfile.FileName;
-
                 if (bannerInfo.Banner != null && uploadfile != null)
                 {
                     //Önceki resmi dosyadan silelim ki boşuna yer kaplamasın.
-                    string filePath = "/Uploads/Banners/" + id + "/" + uploadfile.FileName;
+                    string filePath = "/Uploads/Banners/" + id + "/" + bannerInfo.Banner;
                     if (System.IO.File.Exists(filePath))
                         System.IO.File.Delete(filePath);
+
+                    if (uploadfile != null)
+                        bannerInfo.Banner = uploadfile.FileName;
 
                     _generalFunctions.CreateDirectory(HttpContext.Server.MapPath("/Uploads/Banners/"), id.ToString());
                     uploadfile.SaveAs(HttpContext.Server.MapPath("/Uploads/Banners/" + id + "/" + uploadfile.FileName));
                 }
 
-                bannerInfo.BannerID = id;
-                bannerInfo.LanguageID = 1;
+                //bannerInfo.BannerID = id;
+                //bannerInfo.LanguageID = 1;
                 _bannerInfoService.Update(bannerInfo);
 
                 TempData.Add("message", "Banner başarıyla güncellendi.");
@@ -221,7 +221,7 @@ namespace CMS.UI.Areas.Admin.Controllers
                 return RedirectToAction("index");
 
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 TempData.Add("message", "Banner güncellenirken hata ile karşılaştı. Hata: " + ex.Message);
                 return View();
