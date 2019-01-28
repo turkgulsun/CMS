@@ -1,5 +1,12 @@
-﻿@model IEnumerable<CMS.UI.Areas.Admin.Models.BannersVM.BannersListVM>
+﻿@model IPagedList<CMS.UI.Areas.Admin.Models.BannersVM.BannersListVM>
+@using PagedList;
+@using PagedList.Mvc
+
+
 @{
+    /**/
+
+
     ViewBag.Title = "Bannerlar";
     Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
@@ -44,7 +51,7 @@
                                             <img src="~/Uploads/Banners/@item.BannerID/@item.Banner" alt="@item.Name" style="width:50px; height:50px;" />
                                         </td>
                                         <td>
-                                                @Html.DisplayFor(modelItem => item.Name)
+                                            @Html.DisplayFor(modelItem => item.Name)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Description)
@@ -53,9 +60,7 @@
                                             @Html.CheckBoxFor(modelItem => item.Active, new { @disabled = "disabled" })
                                         </td>
                                         <td>@Html.DisplayFor(modelItem => item.ListType)</td>
-                                        <td>
-                                            
-                                        </td>
+                                        <td></td>
                                         <td>
                                             @Html.ActionLink("Düzenle", "Edit", new { id = item.BannerID }, new { @class = "btn btn-outline-primary pull-right" })
                                         </td>
@@ -72,8 +77,14 @@
                                         </td>
                                     </tr>
                                 }
+                                <tr>
+                                    <td colspan="8"></td>
+                                </tr>
                             </tfoot>
                         </table>
+                        <div class="pagedList">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+                        </div>
                     </div>
                 </div>
             </div>

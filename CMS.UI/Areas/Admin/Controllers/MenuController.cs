@@ -7,6 +7,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+using CMS.Business.Enums;
 
 namespace CMS.UI.Areas.Admin.Controllers
 {
@@ -31,7 +33,7 @@ namespace CMS.UI.Areas.Admin.Controllers
         }
 
         [Route("index")]
-        public ActionResult Index()
+        public ActionResult Index(int page = 1)
         {
             try
             {
@@ -54,7 +56,7 @@ namespace CMS.UI.Areas.Admin.Controllers
                                  Active = m.Active,
                                  CreationDate = m.CreationDate
                              }
-                           ).ToList();
+                           ).ToPagedList(page, (int)PagingEnums.Paging.PageSize);
 
                 return View(model);
 

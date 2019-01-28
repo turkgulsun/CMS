@@ -8,7 +8,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using static CMS.Business.Enums.ListTypeEnums;
+using PagedList;
+using CMS.Business.Enums;
 
 namespace CMS.UI.Areas.Admin.Controllers
 {
@@ -35,7 +36,8 @@ namespace CMS.UI.Areas.Admin.Controllers
 
         // GET: Admin/Banner
         [Route("index")]
-        public ActionResult Index()
+        [HttpGet]
+        public ActionResult Index(int page=1)
         {
 
             //comment
@@ -58,7 +60,7 @@ namespace CMS.UI.Areas.Admin.Controllers
                              Active = b.Active,
                              ListType = lI.Value,
                              Description = bI.Description
-                         }).ToList();
+                         }).ToPagedList(page, (int)PagingEnums.Paging.PageSize);
 
             return View(model);
         }

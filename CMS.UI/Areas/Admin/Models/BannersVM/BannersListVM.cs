@@ -21,6 +21,7 @@ namespace CMS.UI.Areas.Admin.Models.BannersVM
         [Display(Name = "Banner Yeri")]
         public string ListType { get; set; }
         public string Description { get; set; }
+        
 
     }
 }
