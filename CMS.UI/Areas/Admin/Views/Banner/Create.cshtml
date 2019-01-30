@@ -19,11 +19,12 @@
     });
 }
 
+
+@*<script src="~/Content/js/jquery-1.11.2.min.js"></script>*@
 <script src="~/Areas/Admin/ckeditor/ckeditor.js"></script>
-<script src="~/Content/js/jquery-1.11.2.min.js"></script>
 
 
-@using (Html.BeginForm("Create", "Banner", FormMethod.Post, new { id = "form1", enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Create", "Banner", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="row">
         <div class="col-lg-8">

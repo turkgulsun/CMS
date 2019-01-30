@@ -9,7 +9,7 @@
 <div class="title-bar">
     <h1 class="title-bar-title">
         <span class="icon icon-plus"></span>
-        <span class="d-ib">@Html.ActionLink("Menü Oluştur", "Create")</span>
+        <span class="d-ib">@Html.ActionLink("Menü Oluştur", "Create", new { menuId = ViewBag.MenuId })</span>
     </h1>
 </div>
 @using (Html.BeginForm("Delete", "Menu", FormMethod.Post, new { enctype = "multipart/form-data" }))
@@ -41,7 +41,9 @@
                                             </label>
                                         </td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.Menu)
+                                            <a href="@Url.Action("Index", "Menu", new {menuId = item.MenuID})">
+                                                @Html.DisplayFor(modelItem => item.Menu)
+                                            </a>
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.MenuYeri)

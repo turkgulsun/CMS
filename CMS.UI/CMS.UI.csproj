@@ -1877,11 +1877,11 @@
     <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <Content Include="Areas\Admin\Views\Classes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\Index.cshtml" />
-    <Content Include="Areas\Admin\Views\Banner\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Banner\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />

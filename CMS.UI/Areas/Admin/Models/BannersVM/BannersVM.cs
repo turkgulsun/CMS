@@ -13,7 +13,6 @@ namespace CMS.UI.Areas.Admin.Models.BannersVM
         public Banners Banners { get; set; }
         public BannerInfo BannerInfo { get; set; }
         public List<ListsList> ListType { get; set; }
-        public HttpPostedFileBase PostedFile { get; set; }
 
     }
 }

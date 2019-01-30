@@ -29,7 +29,7 @@
                     <div class="row">
                         <div class="form form-horizontal">
                             <div class="form-group">
-                                @Html.LabelFor(model =>  model.Menus.MenuListID, "Menü Yeri", htmlAttributes: new { @class = "control-label col-md-2" })
+                                @Html.LabelFor(model => model.Menus.MenuListID, "Menü Yeri", htmlAttributes: new { @class = "control-label col-md-2" })
                                 <div class="col-sm-10">
                                     @Html.DropDownListFor(model => model.Menus.MenuListID, listTypes, "Seçiniz", new { @class = "form-control" })
                                     @Html.ValidationMessageFor(model => model.Menus.MenuListID, "", new { @class = "text-danger" })
@@ -72,6 +72,7 @@
                                     @Html.EditorFor(model => model.Menus.Sort, new { htmlAttributes = new { @class = "form-control" } })
                                 </div>
                             </div>
+                            @Html.HiddenFor(model => model.Menus.ParentID)
                             <div class="form-group">
                                 <div class="col-md-offset-2 col-md-10">
                                     <input type="submit" value="Oluştur" class="btn btn-default" id="btnSubmit" />

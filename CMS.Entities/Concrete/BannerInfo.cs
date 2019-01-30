@@ -12,6 +12,7 @@ namespace CMS.Entities.Concrete
     [FluentValidation.Attributes.Validator(typeof(BannerInfoValidator))]
     public class BannerInfo : IEntity
     {
+        [Key]
         public int BannerInfoID { get; set; }
         public int BannerID { get; set; }
         public int LanguageID { get; set; }
@@ -19,6 +20,7 @@ namespace CMS.Entities.Concrete
         [Display(Name = "Ad")]
         public string Name { get; set; }
 
+        [Column(TypeName = "ntext")]
         [Display(Name = "Detay")]
         public string Description { get; set; }
         public string Banner { get; set; }

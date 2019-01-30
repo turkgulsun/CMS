@@ -66,8 +66,6 @@ namespace CMS.UI.Areas.Admin.Controllers
                              ClassTypeID = c.ClassTypeID
 
                          }).ToList();
-
-
             return View(model);
         }
 

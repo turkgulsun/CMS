@@ -15,7 +15,6 @@ namespace CMS.UI.Areas.Admin.Controllers
 {
     [RouteArea("admin")]
     [RoutePrefix("banners")]
-    [Route("index")]
     public class BannerController : Controller
     {
 
