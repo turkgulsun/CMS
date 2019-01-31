@@ -33,7 +33,7 @@ namespace CMS.UI.Areas.Admin.Controllers
         }
 
         [Route("index/{menuId?}")]
-        public ActionResult Index(int? menuId=0, int page = 1)
+        public ActionResult Index(int? menuId = 0, int page = 1)
         {
             try
             {
@@ -42,7 +42,7 @@ namespace CMS.UI.Areas.Admin.Controllers
                 var lists = _listsService.GetAll();
                 var listInfo = _listInfoService.GetAll();
 
-                if (menuId>0)
+                if (menuId > 0)
                     ViewBag.MenuId = menuId;
                 else
                     menuId = 0;
@@ -51,7 +51,7 @@ namespace CMS.UI.Areas.Admin.Controllers
                              join mI in menuInfo on m.MenuID equals mI.MenuID
                              join l in lists on m.MenuListID equals l.ListID
                              join lI in listInfo on l.ListID equals lI.ListID
-                             where m.ParentID== menuId
+                             where m.ParentID == menuId
                              select new MenuListVM
                              {
                                  MenuID = m.MenuID,
@@ -104,7 +104,7 @@ namespace CMS.UI.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateInput(false)]
-        [Route("create")]
+        [Route("create/{menuId?}")]
         public ActionResult Create(Menus menus, MenuInfo menuInfo, HttpPostedFileBase uploadfile)
         {
             try
@@ -232,28 +232,31 @@ namespace CMS.UI.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        public ActionResult Delete(List<int> ids, FormCollection collection, MenuListVM _menuListVM)
+        [Route("delete")]
+        public ActionResult Delete(List<int> ids, MenuListVM _menuListVM)
         {
             try
             {
                 foreach (var id in ids)
                 {
+                    string image = _menuListVM.Image;
                     _menusService.Delete(id);
 
                     //Varsa menü resmini de silelim
-                    //string filePath = HttpContext.Server.MapPath("/Uploads/Menus/" + id + "/" + _menuListVM. _classesListVM.Image);
-                    //if (System.IO.File.Exists(filePath))
-                    //    System.IO.File.Delete(filePath);
+                    string filePath = HttpContext.Server.MapPath("/Uploads/Menus/" + id + "/" + image);
+                    if (System.IO.File.Exists(filePath))
+                        System.IO.File.Delete(filePath);
 
 
                     var menuInfo = _menuInfoService.Get(x => x.MenuID == id);
                     _menuInfoService.Delete(menuInfo.MenuInfoID);
                 }
                 TempData.Add("message", "Menü başarıyla silindi.");
-                return RedirectToAction("Index", "Menü");
+                return RedirectToAction("index");
             }
-            catch
+            catch(Exception ex)
             {
+                TempData.Add("message", "Menü silme işlemi yapılırken hata ile karşılaşıldı. Hata: " + ex.Message);
                 return View();
             }
         }

@@ -56,6 +56,7 @@
                                             @Html.ActionLink("Düzenle", "Edit", new { id = item.MenuID }, new { @class = "btn btn-outline-primary pull-right" })
                                         </td>
                                     </tr>
+                                    @Html.HiddenFor(modelItem => item.Image)
                                 }
                             </tbody>
                             <tfoot>

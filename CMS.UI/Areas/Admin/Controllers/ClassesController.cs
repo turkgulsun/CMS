@@ -174,7 +174,7 @@ namespace CMS.UI.Areas.Admin.Controllers
         // POST: Admin/Classes/Edit/5
         [HttpPost]
         [ValidateInput(false)]
-        [Route("Edit/{id}")]
+        [Route("edit/{id}")]
         public ActionResult Edit(int id, FormCollection collection, HttpPostedFileBase uploadfile, Classes classes, ClassInfo classInfo)
         {
             try
@@ -229,6 +229,7 @@ namespace CMS.UI.Areas.Admin.Controllers
         }
         // POST: Admin/Classes/Delete/5
         [HttpPost]
+        [Route("delete")]
         public ActionResult Delete(List<int> ids, FormCollection collection, ClassesListVM _classesListVM)
         {
             try

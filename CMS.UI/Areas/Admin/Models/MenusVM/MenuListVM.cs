@@ -18,5 +18,6 @@ namespace CMS.UI.Areas.Admin.Models.MenusVM
         public bool Active { get; set; }
         [Display(Name = "Oluşturma Tarihi")]
         public DateTime CreationDate { get; set; }
+        public string Image { get; set; }
     }
 }
