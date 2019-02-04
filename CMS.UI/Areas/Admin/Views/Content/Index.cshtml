@@ -1,17 +1,19 @@
-﻿@model IEnumerable<CMS.UI.Areas.Admin.Models.ClassesVM.ClassesListVM>
+﻿@model IPagedList<CMS.UI.Areas.Admin.Models.ContentsVM.ContentsListVM>
+@using PagedList;
+@using PagedList.Mvc
 @{
-    ViewBag.Title = "Sınıflar";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 
+ViewBag.Title = "Index";
+Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <div class="title-bar">
     <h1 class="title-bar-title">
         <span class="icon icon-plus"></span>
-        <span class="d-ib">@Html.ActionLink("Sınıf Oluştur", "Create", new { id = ViewBag.ClassTypeID, classId=ViewBag.ClassId })</span>
+        <span class="d-ib">@Html.ActionLink("İçerik Oluştur", "Create")</span>
     </h1>
 </div>
-@using (Html.BeginForm("Delete", "Classes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm("Delete", "Content", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     <div class="row">
         <div class="col-xs-12">
@@ -35,14 +37,12 @@
                                     <tr>
                                         <td>
                                             <label class="custom-control custom-control-primary custom-checkbox">
-                                                <input class="custom-control-input" type="checkbox" name="ids" value="@item.ClassID" />
+                                                <input class="custom-control-input" type="checkbox" name="ids" value="@item.ContentID" />
                                                 <span class="custom-control-indicator"></span>
                                             </label>
                                         </td>
                                         <td>
-                                            <a href="@Url.Action("Index", "Classes", new { id = 0, classTypeId = item.ClassTypeID, classId = item.ClassID})">
-                                            @Html.DisplayFor(modelItem => item.Name)
-                                            </a>
+                                            @Html.DisplayFor(modelItem => item.Title)
                                         </td>
                                         <td>
                                             @Html.DisplayFor(modelItem => item.Summary)
@@ -50,31 +50,31 @@
                                         <td>
                                             @Html.CheckBoxFor(modelItem => item.Active, new { @disabled = "disabled" })
                                         </td>
+                                        <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
                                         <td>
-                                            @Html.DisplayFor(modelItem => item.CreationDate)
-                                        </td>
-                                        <td>
-                                            @Html.ActionLink("Düzenle", "Edit", new { id = item.ClassID }, new { @class = "btn btn-outline-primary pull-right" })
+                                            @Html.ActionLink("Düzenle", "Edit", new { id = item.ContentID}, new { @class = "btn btn-outline-primary pull-right" })
                                         </td>
                                     </tr>
-                                    @Html.HiddenFor(modelItem => item.ClassTypeID)
-                                    @Html.HiddenFor(modelItem => item.Image)
                                 }
                             </tbody>
                             <tfoot>
                                 @if (Model.Count() > 0)
                                 {
                                     <tr>
-                                        <td colspan="7">
+                                        <td colspan="8">
                                             <input type="submit" name="delete" value="Delete" class="btn btn-danger pull-right" onclick="return confirm('Kaydı silmek istediğinizden emin misiniz?');" />
 
                                         </td>
                                     </tr>
                                 }
-
-
+                                <tr>
+                                    <td colspan="8"></td>
+                                </tr>
                             </tfoot>
                         </table>
+                        <div class="pagedList">
+                            @Html.PagedListPager(Model, page => Url.Action("Index", new { page }), PagedListRenderOptions.PageNumbersOnly)
+                        </div>
                     </div>
                 </div>
             </div>
@@ -82,3 +82,4 @@
 
     </div>
 }
+

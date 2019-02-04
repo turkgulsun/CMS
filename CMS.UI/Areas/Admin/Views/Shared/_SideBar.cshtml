@@ -51,6 +51,17 @@
                             </li>
                         </ul>
                     </li>
+                    <li class="sidenav-item has-subnav active">
+                        <a href="#" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-columns"></span>
+                            <span class="sidenav-label">İçerikler</span>
+                        </a>
+                        <ul class="sidenav-subnav collapse">
+                            @{
+                                Html.RenderAction("ContentClassList", "Home");
+                            }
+                        </ul>
+                    </li>
                 </ul>
             </nav>
         </div>

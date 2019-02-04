@@ -1882,6 +1882,9 @@
     <Content Include="Areas\Admin\Views\Banner\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Menu\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Banner\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Home\ContentClassList.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\Create.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1918,6 +1921,7 @@
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BannerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClassesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
     <Compile Include="Areas\Admin\Controllers\MenuController.cs" />
     <Compile Include="Areas\Admin\Models\BannersVM\BannersListVM.cs" />
@@ -1925,6 +1929,8 @@
     <Compile Include="Areas\Admin\Models\ClassesVM\ClassesVM.cs" />
     <Compile Include="Areas\Admin\Models\ClassesVM\ClassesListVM.cs" />
     <Compile Include="Areas\Admin\Models\ClassTypesVM\ClassTypeInfoListVM.cs" />
+    <Compile Include="Areas\Admin\Models\ContentsVM\ContentsListVM.cs" />
+    <Compile Include="Areas\Admin\Models\ContentsVM\ContentsVM.cs" />
     <Compile Include="Areas\Admin\Models\ListsVM\ListsList.cs" />
     <Compile Include="Areas\Admin\Models\MenusVM\MenuListVM.cs" />
     <Compile Include="Areas\Admin\Models\MenusVM\MenusVM.cs" />
@@ -1964,6 +1970,7 @@
     <Folder Include="Models\" />
     <Folder Include="Uploads\Banners\" />
     <Folder Include="Uploads\Classes\" />
+    <Folder Include="Uploads\Contents\" />
     <Folder Include="Uploads\Menus\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>

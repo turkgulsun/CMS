@@ -1,0 +1,10 @@
+﻿@model List<CMS.UI.Areas.Admin.Models.ClassesVM.ClassesListVM>
+
+    @foreach (var item in Model)
+    {
+        <li>
+            <a href="@Url.Action("index", "Content",new {area = "admin",cId = item.ClassID })">
+                @item.Name
+            </a>
+        </li>
+    }

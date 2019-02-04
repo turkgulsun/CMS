@@ -13,10 +13,14 @@ namespace CMS.Entities.Concrete
     {
         [Key]
         public int ContentID { get; set; }
+        public int ClassID { get; set; }
         public int Review { get; set; }
+        [Display(Name = "Sıra")]
         public int Sort { get; set; }
-        public DateTime LastMotifiedDate { get; set; }
+        public DateTime LastModifiedDate { get; set; }
+        [Display(Name = "Resim")]
         public string Image { get; set; }
+        [Display(Name = "Yayın")]
         public bool Active { get; set; }
         public DateTime CreationDate { get; set; }
     }

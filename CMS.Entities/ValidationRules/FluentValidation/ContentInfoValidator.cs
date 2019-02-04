@@ -10,7 +10,7 @@ namespace CMS.Entities.ValidationRules.FluentValidation
     {
         public ContentInfoValidator()
         {
-            RuleFor(t => t.Title).NotEmpty().WithMessage("Lütfen içerik başlığını giriniz.");
+            RuleFor(t => t.Title).NotEmpty().WithMessage("Lütfen başlık giriniz.");
         }
     }
 }

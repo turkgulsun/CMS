@@ -1,7 +1,6 @@
 ﻿using CMS.Business.Abstract;
 using CMS.Entities.Concrete;
 using CMS.UI.Areas.Admin.Models.BannersVM;
-using CMS.UI.Areas.Admin.Models.ListsVM;
 using CMS.UI.Functions;
 using System;
 using System.Collections.Generic;
@@ -46,7 +45,7 @@ namespace CMS.UI.Areas.Admin.Controllers
             var listInfo = _listInfoService.GetAll();
 
             var model = (from b in banners
-                         join bI in bannerInfo on b.BannerID equals bI.BannerID
+                         join bI in bannerInfo on  b.BannerID equals bI.BannerID
                          join l in lists on b.BannerListID equals l.ListID
                          join lI in listInfo on l.ListID equals lI.ListID
                          select new BannersListVM

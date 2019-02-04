@@ -12,8 +12,8 @@ namespace CMS.Business.Abstract
 
         ClassInfo Get(Expression<Func<ClassInfo, bool>> filter = null);
 
-        void Add(ClassInfo classes);
-        void Update(ClassInfo classes);
+        void Add(ClassInfo classInfo);
+        void Update(ClassInfo classInfo);
         void Delete(int classInfoId);
     }
 }

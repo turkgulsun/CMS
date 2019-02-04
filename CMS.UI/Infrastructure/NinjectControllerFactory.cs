@@ -18,7 +18,6 @@ namespace CMS.UI.Infrastructure
         {
             _kernel = new StandardKernel();
 
-            #region ClassTypes and Classes Info
             //Classes
             _kernel.Bind<IClassesService>().To<ClassesManager>();
             _kernel.Bind<IClassesDal>().To<EfClassesDal>();
@@ -54,9 +53,6 @@ namespace CMS.UI.Infrastructure
             //Contents
             _kernel.Bind<IContentsService>().To<ContentsManager>();
             _kernel.Bind<IContentsDal>().To<EfContentsDal>();
-
-            #endregion
-
 
         }
 
