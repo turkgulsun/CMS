@@ -52,7 +52,7 @@ Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
                                         </td>
                                         <td>@Html.DisplayFor(modelItem => item.CreationDate)</td>
                                         <td>
-                                            @Html.ActionLink("Düzenle", "Edit", new { id = item.ContentID}, new { @class = "btn btn-outline-primary pull-right" })
+                                            @Html.ActionLink("Düzenle", "Edit", new { cId = item.ContentID}, new { @class = "btn btn-outline-primary pull-right" })
                                         </td>
                                     </tr>
                                 }
@@ -62,7 +62,7 @@ Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
                                 {
                                     <tr>
                                         <td colspan="8">
-                                            <input type="submit" name="delete" value="Delete" class="btn btn-danger pull-right" onclick="return confirm('Kaydı silmek istediğinizden emin misiniz?');" />
+                                            <input type="submit" name="delete" value="Sil" class="btn btn-danger pull-right" onclick="return confirm('Kaydı silmek istediğinizden emin misiniz?');" />
 
                                         </td>
                                     </tr>

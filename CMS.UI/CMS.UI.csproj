@@ -1729,6 +1729,7 @@
     <Content Include="Areas\Admin\Content\img\segment.svg" />
     <Content Include="Areas\Admin\Content\js\application.js" />
     <Content Include="Areas\Admin\Content\js\application.min.js" />
+    <Content Include="Areas\Admin\Content\js\checktree.js" />
     <Content Include="Areas\Admin\Content\js\compose.js" />
     <Content Include="Areas\Admin\Content\js\compose.min.js" />
     <Content Include="Areas\Admin\Content\js\contacts.js" />
@@ -1885,6 +1886,8 @@
     <Content Include="Areas\Admin\Views\Content\Index.cshtml" />
     <Content Include="Areas\Admin\Views\Home\ContentClassList.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\ListMenu.cshtml" />
+    <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1904,6 +1907,11 @@
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="Uploads\Contents\2002\core.PNG" />
+    <Content Include="Uploads\Contents\2003\core.PNG" />
+    <Content Include="Uploads\Contents\2005\core.PNG" />
+    <Content Include="Uploads\Contents\2012\core.PNG" />
+    <Content Include="Uploads\Contents\2013\core.PNG" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
@@ -1932,11 +1940,13 @@
     <Compile Include="Areas\Admin\Models\ContentsVM\ContentsListVM.cs" />
     <Compile Include="Areas\Admin\Models\ContentsVM\ContentsVM.cs" />
     <Compile Include="Areas\Admin\Models\ListsVM\ListsList.cs" />
+    <Compile Include="Areas\Admin\Models\MenusVM\MenuListAdminVM.cs" />
     <Compile Include="Areas\Admin\Models\MenusVM\MenuListVM.cs" />
     <Compile Include="Areas\Admin\Models\MenusVM\MenusVM.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Functions\GeneralFunctions.cs" />
+    <Compile Include="Functions\MenuFunction.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -1970,7 +1980,7 @@
     <Folder Include="Models\" />
     <Folder Include="Uploads\Banners\" />
     <Folder Include="Uploads\Classes\" />
-    <Folder Include="Uploads\Contents\" />
+    <Folder Include="Uploads\Contents\5\" />
     <Folder Include="Uploads\Menus\" />
     <Folder Include="Views\Test\" />
   </ItemGroup>

@@ -21,14 +21,19 @@ namespace CMS.Business.Concrete
             _contentClassesDal.Add(contentClasses);
         }
 
-        public void Delete(int contentID)
+        public void Delete(int contentClassID)
         {
-            _contentClassesDal.Delete(new ContentClasses { ContentID = contentID });
+            _contentClassesDal.Delete(new ContentClasses { ContentClassID = contentClassID });
         }
 
         public ContentClasses Get(Expression<Func<ContentClasses, bool>> filter)
         {
             return _contentClassesDal.Get(filter);
+        }
+
+        public List<ContentClasses> GetAll(Expression<Func<ContentClasses, bool>> filter)
+        {
+            return _contentClassesDal.GetList(filter);
         }
 
         public List<ContentClasses> GetAll()

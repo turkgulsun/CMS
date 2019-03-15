@@ -39,6 +39,7 @@ namespace CMS.UI.Areas.Admin.Controllers
             {
                 var menus = _menusService.GetAll();
                 var menuInfo = _menuInfoService.GetAll();
+
                 var lists = _listsService.GetAll();
                 var listInfo = _listInfoService.GetAll();
 

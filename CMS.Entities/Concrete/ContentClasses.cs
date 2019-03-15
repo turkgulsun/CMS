@@ -11,6 +11,7 @@ namespace CMS.Entities.Concrete
     public class ContentClasses : IEntity
     {
         [Key]
+        public int ContentClassID { get; set; }
         public int ContentID { get; set; }
         public int ClassID { get; set; }
         public int MenuID { get; set; }
