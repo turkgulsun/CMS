@@ -35,7 +35,7 @@ namespace CMS.UI.Areas.Admin.Controllers
         // GET: Admin/Banner
         [Route("index")]
         [HttpGet]
-        public ActionResult Index(int page=1)
+        public ActionResult Index(int page = 1)
         {
 
             //comment
@@ -45,7 +45,7 @@ namespace CMS.UI.Areas.Admin.Controllers
             var listInfo = _listInfoService.GetAll();
 
             var model = (from b in banners
-                         join bI in bannerInfo on  b.BannerID equals bI.BannerID
+                         join bI in bannerInfo on b.BannerID equals bI.BannerID
                          join l in lists on b.BannerListID equals l.ListID
                          join lI in listInfo on l.ListID equals lI.ListID
                          select new BannersListVM
@@ -144,8 +144,8 @@ namespace CMS.UI.Areas.Admin.Controllers
                     var bannerInfo = _bannerInfoService.Get(x => x.BannerID == id);
                     //Bannerı silelim.
                     string filePath = HttpContext.Server.MapPath("/Uploads/Banners/" + id + "/" + bannerInfo.Banner);
-                    if (System.IO.File.Exists(filePath))
-                        System.IO.File.Delete(filePath);
+                    if (System.IO.File.Exists(Server.MapPath(filePath)))
+                        System.IO.File.Delete(Server.MapPath(filePath));
                     _bannerInfoService.Delete(bannerInfo.BannerInfoID);
                 }
                 TempData.Add("message", "Banner başarıyla silindi.");
@@ -162,10 +162,12 @@ namespace CMS.UI.Areas.Admin.Controllers
         {
             try
             {
+                var listTypes = _generalFunctions.GetListType("Banner Yeri");
                 var model = new BannersVM
                 {
                     Banners = _bannerService.GetById(id),
-                    BannerInfo = _bannerInfoService.Get(b => b.BannerID == id)
+                    BannerInfo = _bannerInfoService.Get(b => b.BannerID == id),
+                    ListType = listTypes
                 };
                 return View(model);
             }
@@ -202,8 +204,8 @@ namespace CMS.UI.Areas.Admin.Controllers
                 {
                     //Önceki resmi dosyadan silelim ki boşuna yer kaplamasın.
                     string filePath = "/Uploads/Banners/" + id + "/" + bannerInfo.Banner;
-                    if (System.IO.File.Exists(filePath))
-                        System.IO.File.Delete(filePath);
+                    if (System.IO.File.Exists(Server.MapPath(filePath)))
+                        System.IO.File.Delete(Server.MapPath(filePath));
 
                     if (uploadfile != null)
                         bannerInfo.Banner = uploadfile.FileName;

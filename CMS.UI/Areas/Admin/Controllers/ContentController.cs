@@ -189,8 +189,8 @@ namespace CMS.UI.Areas.Admin.Controllers
                     if (image != null)
                     {
                         string filePath = HttpContext.Server.MapPath("/Uploads/Contents/" + id + "/" + image);
-                        if (System.IO.File.Exists(filePath))
-                            System.IO.File.Delete(filePath);
+                        if (System.IO.File.Exists(Server.MapPath(filePath)))
+                            System.IO.File.Delete(Server.MapPath(filePath));
                     }
 
                     var contentInfo = _contentInfoService.Get(x => x.ContentID == id);
@@ -204,8 +204,7 @@ namespace CMS.UI.Areas.Admin.Controllers
                     }
                 }
                 TempData.Add("message", "İçerik başarıyla silindi.");
-                string url = String.Format("index/{0}", classId);
-                return Redirect(url);
+                return RedirectToAction("index", new { cId = classId });
             }
             catch (Exception ex)
             {
@@ -283,8 +282,8 @@ namespace CMS.UI.Areas.Admin.Controllers
                 {
                     //Önceki resmi dosyadan silelim ki boşuna yer kaplamasın.
                     string filePath = "/Uploads/Contents/" + cId + "/" + content.Image;
-                    if (System.IO.File.Exists(filePath))
-                        System.IO.File.Delete(filePath);
+                    if (System.IO.File.Exists(Server.MapPath(filePath)))
+                        System.IO.File.Delete(Server.MapPath(filePath));
 
                     if (uploadfile != null)
                         content.Image = uploadfile.FileName;
@@ -319,9 +318,7 @@ namespace CMS.UI.Areas.Admin.Controllers
                 }
 
                 TempData.Add("message", "İçerik başarıyla güncellendi.");
-
-                string url = String.Format("index/{0}", content.ClassID);
-                return Redirect(url);
+                return RedirectToAction("index", new { cId = content.ClassID });
             }
             catch (Exception ex)
             {

@@ -1912,6 +1912,7 @@
     <Content Include="Uploads\Contents\2005\core.PNG" />
     <Content Include="Uploads\Contents\2012\core.PNG" />
     <Content Include="Uploads\Contents\2013\core.PNG" />
+    <Content Include="Uploads\Contents\2021\3.png" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Scripts\umd\popper.min.js.map" />
