@@ -26,11 +26,14 @@ namespace CMS.DataAccess.Concrete.EntityFramework
         public virtual DbSet<ContentImages> ContentImages { get; set; }
         public virtual DbSet<ContentInfo> ContentInfo { get; set; }
         public virtual DbSet<Contents> Contents { get; set; }
+        public virtual DbSet<Users> Users { get; set; }
+
+        public virtual DbSet<UserTypes> UserTypes { get; set; }
 
 
 
-        protected override void OnModelCreating(DbModelBuilder modelBuilder)
-        {
-        }
+    protected override void OnModelCreating(DbModelBuilder modelBuilder)
+    {
     }
+}
 }

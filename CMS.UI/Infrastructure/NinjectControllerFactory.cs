@@ -53,6 +53,12 @@ namespace CMS.UI.Infrastructure
             //Contents
             _kernel.Bind<IContentsService>().To<ContentsManager>();
             _kernel.Bind<IContentsDal>().To<EfContentsDal>();
+            //Users
+            _kernel.Bind<IUsersService>().To<UsersManager>();
+            _kernel.Bind<IUsersDal>().To<EfUsersDal>();
+            //UserTypes
+            _kernel.Bind<IUserTypesService>().To<UserTypesManager>();
+            _kernel.Bind<IUserTypesDal>().To<EfUserTypesDal>();
 
         }
 

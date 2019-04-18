@@ -29,7 +29,9 @@
                         </a>
                         <ul class="sidenav-subnav collapse">
                             @{
-                                Html.RenderAction("ClassTypeList", "Home");
+                                            /**/
+
+                                            Html.RenderAction("ClassTypeList", "Home");
                             }
                         </ul>
                     </li>
@@ -62,6 +64,13 @@
                             }
                         </ul>
                     </li>
+                    <li class="sidenav-item active">
+                        <a href="@Url.Action("Index","Account")" aria-haspopup="true">
+                            <span class="sidenav-icon icon icon-columns"></span>
+                            <span class="sidenav-label">Kullanıcılar</span>
+                        </a>
+                    </li>
+
                 </ul>
             </nav>
         </div>

@@ -1,0 +1,63 @@
+﻿@model CMS.UI.Areas.Admin.Models.UsersVM.UsersVM
+@{
+    ViewBag.Title = "Kullanıcı Güncelle";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
+
+    var userTypes = new SelectList(Model.UserTypes, "UserTypeID", "Role");
+}
+
+@using (Html.BeginForm("Edit", "Account", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="row">
+        <div class="col-lg-8">
+            <div class="demo-form-wrapper">
+                <hr />
+                <div class="tab-content">
+                    <div class="row">
+                        <div class="form form-horizontal">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.User.UserTypeID, "Kullanıcı Rolü", htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.DropDownListFor(model => model.User.UserTypeID, userTypes, "Seçiniz", new { @class = "form-control" })
+                                    @Html.ValidationMessageFor(model => model.User.UserTypeID, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.User.UserName, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.User.UserName, new { htmlAttributes = new { @class = "form-control" } })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.User.EMail, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.User.EMail, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.User.EMail, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.User.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+                                <div class="col-sm-10">
+                                    @Html.EditorFor(model => model.User.Password, new { htmlAttributes = new { @class = "form-control" } })
+                                    @Html.ValidationMessageFor(model => model.User.Password, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-offset-2 col-md-10">
+                                    <input type="submit" value="Güncelle" class="btn btn-default" id="btnSubmit" />
+                                </div>
+                            </div>
+                            @Html.HiddenFor(model => model.User.UserID)
+                            @Html.HiddenFor(model => model.User.CreationDate)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div>
+    @Html.ActionLink("Kullanıcı listesine geri dön", "Index")
+</div>
+
+

@@ -1888,6 +1888,9 @@
     <Content Include="Areas\Admin\Views\Content\Create.cshtml" />
     <Content Include="Areas\Admin\Views\Content\ListMenu.cshtml" />
     <Content Include="Areas\Admin\Views\Content\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Account\Edit.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -1928,6 +1931,7 @@
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\AccountController.cs" />
     <Compile Include="Areas\Admin\Controllers\BannerController.cs" />
     <Compile Include="Areas\Admin\Controllers\ClassesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ContentController.cs" />
@@ -1944,6 +1948,8 @@
     <Compile Include="Areas\Admin\Models\MenusVM\MenuListAdminVM.cs" />
     <Compile Include="Areas\Admin\Models\MenusVM\MenuListVM.cs" />
     <Compile Include="Areas\Admin\Models\MenusVM\MenusVM.cs" />
+    <Compile Include="Areas\Admin\Models\UsersVM\UserListVM.cs" />
+    <Compile Include="Areas\Admin\Models\UsersVM\UsersVM.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\TestController.cs" />
     <Compile Include="Functions\GeneralFunctions.cs" />
